@@ -1,95 +1,80 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+"use client";
+import axios from "axios";
+import baseUrl from "../utils/baseUrl";
+import BannerSlider from "../components/Index/BannerSlider";
+import CategoriesStyleOne from "../components/ProductCategories/CategoriesStyleOne";
+import CategoriesStyleTwo from "../components/ProductCategories/CategoriesStyleTwo";
+import BestSellingProductsStyleOne from "../components/Products/BestSellingProductsStyleOne";
+import ProductsPromotionStyleOne from "../components/ProductsPromotions/ProductsPromotionStyleOne";
+import NewArrivals from "../components/Products/NewArrivals";
+import HotDealOfferStyleOne from "../components/Common/HotDealOfferStyleOne";
+import SellingBrandsStyleOne from "../components/Common/SellingBrandsStyleOne";
+import BlogPostStyleOne from "../components/Common/BlogPostStyleOne";
+import FacilityStyleOne from "../components/Common/FacilityStyleOne";
+import { useRecoilValue } from "recoil";
+import { fetchProducts } from "@/utils/recoil-atoms";
 
-export default function Home() {
+const Index = () => {
+  const products = useRecoilValue(fetchProducts);
+
+  if (products === undefined) {
+    // Loading state
+    return <div>Loading...</div>;
+  }
+
+  if (products instanceof Error) {
+    // Error state
+    return <div>Error: {products.message}</div>;
+  }
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.js</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
+    <>
+      <BannerSlider />
+
+      <div className="pt-70 pb-40">{/* <CategoriesStyleOne /> */}</div>
+
+      <div className="pb-40">
+        <CategoriesStyleTwo />
       </div>
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
+      <BestSellingProductsStyleOne products={products} />
+
+      <div className="pb-40">
+        <ProductsPromotionStyleOne />
       </div>
 
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
+      <NewArrivals products={products} />
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
+      <HotDealOfferStyleOne />
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
+      <div className="pt-70 pb-40">
+        <SellingBrandsStyleOne />
       </div>
-    </main>
-  )
-}
+
+      {/* <BlogPostStyleOne /> */}
+
+      <FacilityStyleOne />
+    </>
+  );
+};
+
+// Index.getInitialProps = async (ctx) => {
+//   // console.log(ctx.query)
+//   const page = ctx.query.page ? ctx.query.page : "1";
+//   const size = 8;
+//   const searchTerm = "medical";
+//   // fetch data on server
+//   const url = `${baseUrl || "https://medq.vercel.app"}/api/products`;
+//   const payload = { params: { page, size, searchTerm } };
+//   try {
+//     const response = await axios.get(url, payload);
+//     console.log(payload, url);
+//     // return response data as an object
+//     return response.data;
+//   } catch (err) {
+//     console.log(err);
+//     throw err;
+//   }
+//   // note: this object will be merge with existing props
+// };
+
+export default Index;
