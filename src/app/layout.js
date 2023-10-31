@@ -26,13 +26,10 @@ import { Suspense, useEffect, useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
 
 export default function RootLayout({ children }) {
-  const router = useRouter();
-  const pathname = usePathname();
   const [user, setUser] = useState({});
 
   useEffect(() => {
     const getUser = async () => {
-      console.count();
       if (!firebaseInstance?.auth?.currentUser?.uid) return;
       console.log(firebaseInstance?.auth?.currentUser.uid);
 
@@ -43,8 +40,8 @@ export default function RootLayout({ children }) {
       setUser(res?.data());
     };
     getUser();
-  }, [firebaseInstance.auth.currentUser]);
-  if (pathname === "/admin" && user.role !== "ADMIN") router.push("/");
+  }, [firebaseInstance.auth.currentUser?.uid]);
+
   return (
     <html lang="en">
       <body>
