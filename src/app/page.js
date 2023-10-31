@@ -1,57 +1,51 @@
 "use client";
-import axios from "axios";
-import baseUrl from "../utils/baseUrl";
+
 import BannerSlider from "../components/Index/BannerSlider";
-import CategoriesStyleOne from "../components/ProductCategories/CategoriesStyleOne";
 import CategoriesStyleTwo from "../components/ProductCategories/CategoriesStyleTwo";
 import BestSellingProductsStyleOne from "../components/Products/BestSellingProductsStyleOne";
 import ProductsPromotionStyleOne from "../components/ProductsPromotions/ProductsPromotionStyleOne";
 import NewArrivals from "../components/Products/NewArrivals";
 import HotDealOfferStyleOne from "../components/Common/HotDealOfferStyleOne";
 import SellingBrandsStyleOne from "../components/Common/SellingBrandsStyleOne";
-import BlogPostStyleOne from "../components/Common/BlogPostStyleOne";
 import FacilityStyleOne from "../components/Common/FacilityStyleOne";
-import { useRecoilValue } from "recoil";
+import {
+  useRecoilValue,
+  useRecoilValueLoadable,
+  useRecoilValueLoadable_TRANSITION_SUPPORT_UNSTABLE,
+} from "recoil";
 import { fetchProducts } from "@/utils/recoil-atoms";
+import CategoriesStyleOne from "@/components/ProductCategories/CategoriesStyleOne";
 
 const Index = () => {
-  const products = useRecoilValue(fetchProducts);
-
+  const products = useRecoilValueLoadable(fetchProducts);
   if (products === undefined) {
     // Loading state
     return <div>Loading...</div>;
   }
-
   if (products instanceof Error) {
     // Error state
     return <div>Error: {products.message}</div>;
   }
+  // const products = [];
   return (
     <>
       <BannerSlider />
-
-      <div className="pt-70 pb-40">{/* <CategoriesStyleOne /> */}</div>
-
+      <div className="pt-70 pb-40">
+        <CategoriesStyleOne />
+      </div>
       <div className="pb-40">
         <CategoriesStyleTwo />
       </div>
-
       <BestSellingProductsStyleOne products={products} />
-
       <div className="pb-40">
         <ProductsPromotionStyleOne />
       </div>
-
       <NewArrivals products={products} />
-
       <HotDealOfferStyleOne />
-
       <div className="pt-70 pb-40">
         <SellingBrandsStyleOne />
       </div>
-
       {/* <BlogPostStyleOne /> */}
-
       <FacilityStyleOne />
     </>
   );

@@ -1,7 +1,6 @@
 import React from "react";
 import { useRecoilState } from "recoil";
 import { collapsedState, addProductState } from "../../utils/recoil-atoms";
-// import Link from "../../utils/ActiveLink";
 import Link from "next/link";
 import AddProductsModal from "./AddProductsModal";
 import { handleLogout } from "../../utils/auth";

@@ -22,7 +22,7 @@ import TopHeader from "@/components/_App/TopHeader";
 import firebaseInstance from "@/lib/firebase";
 import { fetchUser } from "@/utils/recoil-atoms";
 import AdminNavbar from "@/components/_App/AdminNavbar";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
 
 export default function RootLayout({ children }) {
@@ -48,18 +48,20 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <RecoilRoot>
-          {user.role === "ADMIN" ? (
-            <AdminNavbar />
-          ) : (
-            <>
-              <TopHeader user={user} />
-              <Navbar user={user} />
-            </>
-          )}
-          {children}
-          <Footer />
-        </RecoilRoot>
+        <Suspense fallback={<div>Loading...</div>}>
+          <RecoilRoot>
+            {user.role === "ADMIN" ? (
+              <AdminNavbar />
+            ) : (
+              <>
+                <TopHeader user={user} />
+                <Navbar user={user} />
+              </>
+            )}
+            {children}
+            <Footer />
+          </RecoilRoot>
+        </Suspense>
       </body>
     </html>
   );
