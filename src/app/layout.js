@@ -23,31 +23,24 @@ import firebaseInstance from "@/lib/firebase";
 import { fetchUser } from "@/utils/recoil-atoms";
 import AdminNavbar from "@/components/_App/AdminNavbar";
 import { Suspense, useEffect, useState } from "react";
-import { useRouter, usePathname } from "next/navigation";
 
 export default function RootLayout({ children }) {
-  const [user, setUser] = useState({});
-
+  const [user, setUser] = useState();
   useEffect(() => {
-    const getUser = async () => {
-      if (!firebaseInstance?.auth?.currentUser?.uid) return;
-      console.log(firebaseInstance?.auth?.currentUser.uid);
-
-      const res = await firebaseInstance.getUser(
-        firebaseInstance.auth.currentUser.uid
-      );
+    const getUser = async (currentUser) => {
+      const res = await firebaseInstance.getUser(currentUser.uid);
       console.log(res.data());
       setUser(res?.data());
     };
-    getUser();
-  }, [firebaseInstance.auth.currentUser?.uid]);
+    firebaseInstance.auth.onAuthStateChanged(getUser);
+  }, []);
 
   return (
     <html lang="en">
       <body>
         <Suspense fallback={<div>Loading...</div>}>
           <RecoilRoot>
-            {user.role === "ADMIN" ? (
+            {user?.role === "ADMIN" ? (
               <AdminNavbar />
             ) : (
               <>

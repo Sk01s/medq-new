@@ -17,7 +17,8 @@ import { fetchProducts } from "@/utils/recoil-atoms";
 import CategoriesStyleOne from "@/components/ProductCategories/CategoriesStyleOne";
 
 const Index = () => {
-  const products = useRecoilValueLoadable(fetchProducts);
+  const { contents } = useRecoilValueLoadable(fetchProducts);
+  const products = contents;
   if (products === undefined) {
     // Loading state
     return <div>Loading...</div>;
