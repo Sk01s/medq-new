@@ -10,19 +10,16 @@ const Index = () => {
 
   useEffect(() => {
     const getUser = async () => {
-      console.count();
       if (!firebaseInstance?.auth?.currentUser?.uid) return;
-      console.log(firebaseInstance?.auth?.currentUser.uid);
 
       const res = await firebaseInstance.getUser(
         firebaseInstance.auth.currentUser.uid
       );
-      console.log(res.data());
       setUser(res?.data());
     };
     getUser();
+    if (user.role !== "ADMIN") router.back();
   }, [firebaseInstance.auth.currentUser]);
-  if (user.role !== "ADMIN") router.back("/");
   return (
     <>
       <div className="admin-main-content">
