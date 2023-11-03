@@ -119,7 +119,11 @@ const ShoppingCartModal = ({ products }) => {
             </div>
 
             <div className="products-cart-btn">
-              <Link href="/checkout" className="default-btn">
+              <Link
+                href="/checkout"
+                onClick={toggleModal}
+                className="default-btn"
+              >
                 Proceed to Checkout
               </Link>
             </div>

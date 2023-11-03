@@ -5,16 +5,18 @@ import PageBanner from "@/components/Common/PageBanner";
 import ProductDetailsStyleOne from "@/components/ProductDetails/ProductDetailsStyleOne";
 import FacilityStyleOne from "@/components/Common/FacilityStyleOne";
 import { fetchProducts } from "@/utils/recoil-atoms";
-import { useRecoilValue } from "recoil";
+import { useRecoilValueLoadable } from "recoil";
 import { useParams } from "next/navigation";
+import Loader from "@/components/_App/Loader";
 
 const Product = () => {
   const { id } = useParams();
-  const products = useRecoilValue(fetchProducts);
+  const { contents } = useRecoilValueLoadable(fetchProducts);
+  const products = contents;
 
-  if (products === undefined) {
+  if (products instanceof Promise) {
     // Loading state
-    return <div>Loading...</div>;
+    return <Loader />;
   }
 
   if (products instanceof Error) {

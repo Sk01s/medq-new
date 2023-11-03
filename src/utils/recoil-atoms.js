@@ -50,3 +50,8 @@ export const quickViewProductState = atom({
   key: "quickViewProductState",
   default: null,
 });
+
+export const userData = atom({
+  key: "user",
+  default: null,
+});

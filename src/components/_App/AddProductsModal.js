@@ -32,6 +32,7 @@ const saleOptions = [
 ];
 
 const INITIAL_PRODUCT = {
+  count: 1,
   name: "",
   price: "",
   productType: "",
@@ -108,9 +109,10 @@ const AddProductsModal = () => {
       //   const url = `${baseUrl}/api/products/create`;
       const id = firebaseInstance.generateKey();
       console.log(id);
-      const { name, price, description, productType, onSale, onOffer } =
+      const { name, price, description, productType, onSale, onOffer, count } =
         product;
       const payload = {
+        count,
         name,
         price,
         description,
@@ -190,6 +192,17 @@ const AddProductsModal = () => {
               />
             </div>
 
+            <div className="form-group">
+              <label>Quantity</label>
+              <input
+                type="text"
+                className="form-control"
+                name="count"
+                placeholder="Quantity"
+                value={product.count}
+                onChange={handleChanhe}
+              />
+            </div>
             <div className="form-group">
               <label>On Sale?</label>
               <Select

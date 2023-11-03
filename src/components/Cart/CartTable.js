@@ -200,7 +200,7 @@ const CartTable = () => {
               </li>
             </ul>
 
-            <Link href="/checkout" className="default-btn">
+            <Link href="/checkout" onClick={() => {}} className="default-btn">
               <i className="flaticon-trolley"></i> Proceed to Checkout
             </Link>
           </div>

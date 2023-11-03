@@ -15,13 +15,14 @@ import {
 } from "recoil";
 import { fetchProducts } from "@/utils/recoil-atoms";
 import CategoriesStyleOne from "@/components/ProductCategories/CategoriesStyleOne";
+import Loader from "@/components/_App/Loader";
 
 const Index = () => {
   const { contents } = useRecoilValueLoadable(fetchProducts);
   const products = contents;
   if (products === undefined) {
     // Loading state
-    return <div>Loading...</div>;
+    return <Loader />;
   }
   if (products instanceof Error) {
     // Error state

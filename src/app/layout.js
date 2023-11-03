@@ -16,29 +16,30 @@ import "../../public/css/responsive.css";
 import "../../public/css/loader.css";
 import "../../public/css/rtl.css";
 import Navbar from "./../components/_App/Navbar";
-import { RecoilRoot, useRecoilValue } from "recoil";
+import { RecoilRoot, useRecoilState, useRecoilValue } from "recoil";
 import Footer from "@/components/_App/Footer";
 import TopHeader from "@/components/_App/TopHeader";
 import firebaseInstance from "@/lib/firebase";
 import { fetchUser } from "@/utils/recoil-atoms";
 import AdminNavbar from "@/components/_App/AdminNavbar";
-import { Suspense, useEffect, useState } from "react";
-
+import React, { Suspense, useEffect, useState } from "react";
+import Loader from "@/components/_App/Loader";
+import { ToastContainer } from "react-toastify";
 export default function RootLayout({ children }) {
   const [user, setUser] = useState();
   useEffect(() => {
-    const getUser = async (currentUser) => {
+    firebaseInstance.auth.onAuthStateChanged(async (currentUser) => {
+      if (!currentUser) return setUser(null);
       const res = await firebaseInstance.getUser(currentUser.uid);
       console.log(res.data());
       setUser(res?.data());
-    };
-    firebaseInstance.auth.onAuthStateChanged(getUser);
+    });
   }, []);
 
   return (
     <html lang="en">
       <body>
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<Loader />}>
           <RecoilRoot>
             {user?.role === "ADMIN" ? (
               <AdminNavbar />
@@ -49,6 +50,7 @@ export default function RootLayout({ children }) {
               </>
             )}
             {children}
+            <ToastContainer />
             <Footer />
           </RecoilRoot>
         </Suspense>

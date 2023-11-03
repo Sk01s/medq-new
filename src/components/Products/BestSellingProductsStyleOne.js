@@ -69,7 +69,7 @@ const BestSellingProductsStyleOne = ({ products }) => {
                           <li>
                             <AddToCart product={product} />
                           </li>
-                          <li>
+                          {/* <li>
                             <div className="wishlist-btn">
                               <Link href="#">
                                 <i className="bx bx-heart"></i>
@@ -78,8 +78,8 @@ const BestSellingProductsStyleOne = ({ products }) => {
                                 </span>
                               </Link>
                             </div>
-                          </li>
-                          <li>
+                          </li> */}
+                          {/* <li>
                             <div className="quick-view-btn">
                               <Link
                                 href="#"
@@ -94,7 +94,7 @@ const BestSellingProductsStyleOne = ({ products }) => {
                                 </span>
                               </Link>
                             </div>
-                          </li>
+                          </li> */}
                         </ul>
                       </div>
                     </div>

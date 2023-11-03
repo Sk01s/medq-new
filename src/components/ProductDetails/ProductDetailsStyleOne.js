@@ -7,8 +7,10 @@ import { toast } from "react-toastify";
 import { useRecoilState } from "recoil";
 import { productsState } from "../../utils/recoil-atoms";
 import calculatePersentage from "../../utils/calculatePercentage";
+import { useRouter } from "next/navigation";
 
 const ProductDetailsStyleOne = ({ product, related }) => {
+  const router = useRouter();
   const [quantity, setQuantity] = React.useState(1);
   const [cartProducts, setCartProducts] = useRecoilState(productsState);
 
@@ -113,7 +115,7 @@ const ProductDetailsStyleOne = ({ product, related }) => {
                 </li>
               </ul>
 
-              <div className="products-color-switch">
+              {/* <div className="products-color-switch">
                 <span>Color:</span>
 
                 <ul>
@@ -137,9 +139,9 @@ const ProductDetailsStyleOne = ({ product, related }) => {
                     <Link href="#" title="Teal" className="color-teal"></Link>
                   </li>
                 </ul>
-              </div>
+              </div> */}
 
-              <div className="products-size-wrapper">
+              {/* <div className="products-size-wrapper">
                 <span>Size:</span>
 
                 <ul>
@@ -159,7 +161,7 @@ const ProductDetailsStyleOne = ({ product, related }) => {
                     <Link href="#">XXL</Link>
                   </li>
                 </ul>
-              </div>
+              </div> */}
 
               <div className="products-info-btn">
                 <Link href="/customer-service">
@@ -218,7 +220,10 @@ const ProductDetailsStyleOne = ({ product, related }) => {
                 <div className="item">
                   <Link
                     href="#"
-                    onClick={addToCartWithQty}
+                    onClick={(e) => {
+                      addToCartWithQty(e);
+                      router.push("/checkout");
+                    }}
                     className="default-btn"
                   >
                     Buy it now!

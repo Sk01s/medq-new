@@ -130,16 +130,16 @@ const AdminNavbar = () => {
                         </li>
 
                         <li className="nav-item">
-                          <Link
-                            href="#"
-                            onClick={(e) => {
-                              e.preventDefault();
+                          <span
+                            onClick={() => {
                               handleLogout();
+                              console.log("login out");
                             }}
+                            style={{ cursor: "pointer" }}
                             className="nav-link"
                           >
                             Sign out
-                          </Link>
+                          </span>
                         </li>
                       </ul>
                     </div>

@@ -4,6 +4,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
+  RecaptchaVerifier,
 } from "firebase/auth";
 import {
   getFirestore,
@@ -60,6 +61,7 @@ class Firebase {
   // Firestore Collections
   usersCollection = collection(db, "users");
   productsCollection = collection(db, "products");
+  addressCollection = collection(db, "address");
   orderCollection = collection(db, "order");
 
   // Firestore Queries
@@ -77,16 +79,27 @@ class Firebase {
   updateProfile = (id, updates) =>
     updateDoc(doc(this.db, "users", id), updates);
   addProduct = (id, product) => setDoc(doc(this.db, "products", id), product);
+  // addAddress = (product) => addDoc(this.addressCollection, product);
   updateProduct = (id, updates) =>
     updateDoc(doc(this.db, "products", id), updates);
   removeProduct = (id) => deleteDoc(doc(this.db, "products", id));
-  addOrder = (id, order) => setDoc(doc(this.db, "order", id), order);
+  addOrder = (order) => addDoc(this.orderCollection, order);
   removeOrder = (id) => deleteDoc(doc(this.db, "order", id));
 
   // Firestore Queries
   getProducts = () => getDocs(this.productsQuery);
   searchProducts = (searchKey) => {
     // Implement your search logic here
+  };
+  generateRecaptcha = () => {
+    const recaptchaVerifier = new RecaptchaVerifier("recaptcha-container", {
+      size: "invisible", // Adjust size as needed
+      callback: () => {
+        // reCAPTCHA callback function
+      },
+    });
+
+    recaptchaVerifier.render();
   };
 
   // Storage Actions

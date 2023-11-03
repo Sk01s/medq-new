@@ -9,6 +9,7 @@ import {
 } from "../../utils/recoil-atoms";
 import calculatePersentage from "../../utils/calculatePercentage";
 
+
 const ProductsQuickViewModal = () => {
   const [quantity, setQuantity] = React.useState(1);
   const [qModal, setQModal] = useRecoilState(qModalState);
@@ -153,7 +154,9 @@ const ProductsQuickViewModal = () => {
                   </li>
                   <li>
                     <span>Availability:</span>{" "}
-                    <Link href="#">In stock (7 items)</Link>
+                    <Link href="#">
+                      In stock ({quickViewProduct.count || 7} items)
+                    </Link>
                   </li>
                   <li>
                     <span>Products Type:</span>{" "}

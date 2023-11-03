@@ -20,8 +20,8 @@ const Navbar = ({ user }) => {
   const [cartProducts, setCartProducts] = useRecoilState(productsState);
 
   React.useEffect(() => {
-    setCartProducts(JSON.parse(localStorage.getItem("myCart")) || []);
-  }, []);
+    // setCartProducts(JSON.parse(localStorage.getItem("myCart")) || []);
+  }, [JSON.parse(localStorage.getItem("myCart"))[0]]);
   // console.log(cart)
 
   const toggleNavbar = () => {

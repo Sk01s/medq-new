@@ -1,3 +1,4 @@
+import firebaseInstance from "@/lib/firebase";
 import cookie from "js-cookie";
 import Router from "next/navigation";
 import { toast } from "react-toastify";
@@ -24,16 +25,7 @@ import { toast } from "react-toastify";
 //   }
 // };
 
-// export const handleLogout = () => {
-//   cookie.remove("medq_token");
-//   window.localStorage.setItem("logout", Date.now());
-//   Router.push("/");
-//   toast.success("Logged out successfully", {
-//     position: "bottom-left",
-//     autoClose: 5000,
-//     hideProgressBar: false,
-//     closeOnClick: true,
-//     pauseOnHover: true,
-//     draggable: true,
-//   });
-// };
+export const handleLogout = async () => {
+  const res = await firebaseInstance.signOut();
+  return res;
+};
