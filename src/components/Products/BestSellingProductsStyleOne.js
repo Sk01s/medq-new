@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { useRecoilState } from "recoil";
 import { qModalState, quickViewProductState } from "../../utils/recoil-atoms";
@@ -7,13 +7,24 @@ import AddToCart from "../Common/AddToCart";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
+import firebaseInstance from "@/lib/firebase";
 
-const BestSellingProductsStyleOne = ({ products }) => {
+const BestSellingProductsStyleOne = ({ products, admin }) => {
+  console.log(products);
+  const [productsData, setProductsData] = useState(products);
   const [qModal, setQModal] = useRecoilState(qModalState);
   const [quickViewProduct, setQuickViewProduct] = useRecoilState(
     quickViewProductState
   );
 
+  const handleDelete = async (id) => {
+    console.log(id);
+    const res = await firebaseInstance.removeProduct(id);
+    setProductsData((products) =>
+      products.filter((product) => product._id !== id)
+    );
+    console.log(products);
+  };
   const toggleModal = (p) => {
     // e.preventDefault()
     setQModal(!qModal);
@@ -26,7 +37,7 @@ const BestSellingProductsStyleOne = ({ products }) => {
       <div className="products-area pb-40">
         <div className="container">
           <div className="section-title">
-            <h2>Best Selling</h2>
+            <h2>{admin ? "Products" : "Best Selling"}</h2>
           </div>
 
           <Swiper
@@ -49,8 +60,8 @@ const BestSellingProductsStyleOne = ({ products }) => {
             modules={[Navigation]}
             className="products-slides"
           >
-            {products.length ? (
-              products.map((product) => (
+            {productsData.length ? (
+              productsData.map((product) => (
                 <SwiperSlide key={product._id}>
                   <div className="single-products-box">
                     <div className="image">
@@ -61,14 +72,41 @@ const BestSellingProductsStyleOne = ({ products }) => {
                         <img src={product.mediaUrl} alt={product.name} />
                       </Link>
 
-                      <div className="new">New</div>
+                      {product.count <= 0 && (
+                        <div className="new">Out of Stock</div>
+                      )}
                       {product.onSale ? <div className="sale">Sale</div> : ""}
 
                       <div className="buttons-list">
                         <ul>
-                          <li>
-                            <AddToCart product={product} />
-                          </li>
+                          {admin ? (
+                            <>
+                              <li>
+                                <button
+                                  onClick={() => handleDelete(product._id)}
+                                  className={"navbar-toggler "}
+                                  style={{
+                                    backgroundColor: "transparent ",
+                                  }}
+                                  type="button"
+                                  data-toggle="collapse"
+                                  data-target="#navbarSupportedContent"
+                                  aria-controls="navbarSupportedContent"
+                                  aria-expanded="false"
+                                  aria-label="Toggle navigation"
+                                >
+                                  <span className="icon-bar top-bar"></span>
+                                  <span className="icon-bar middle-bar"></span>
+                                  <span className="icon-bar bottom-bar"></span>
+                                </button>
+                              </li>
+                              <li></li>
+                            </>
+                          ) : (
+                            <li>
+                              <AddToCart product={product} />
+                            </li>
+                          )}
                           {/* <li>
                             <div className="wishlist-btn">
                               <Link href="#">

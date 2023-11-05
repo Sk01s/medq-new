@@ -58,7 +58,6 @@ export async function POST(req) {
     //       total: cartTotal,
     //       products: products,
     //     });
-    console.log("6");
     return NextResponse.json(
       { clientSecret: paymentIntent.client_secret },
       { status: 200 }

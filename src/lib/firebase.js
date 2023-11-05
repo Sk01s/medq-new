@@ -4,7 +4,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
-  RecaptchaVerifier,
+  sendPasswordResetEmail,
 } from "firebase/auth";
 import {
   getFirestore,
@@ -57,7 +57,7 @@ class Firebase {
     signInWithEmailAndPassword(auth, email, password);
 
   signOut = () => signOut(auth);
-
+  sendEmail = (email) => sendPasswordResetEmail(this.auth, email);
   // Firestore Collections
   usersCollection = collection(db, "users");
   productsCollection = collection(db, "products");
@@ -82,8 +82,15 @@ class Firebase {
   // addAddress = (product) => addDoc(this.addressCollection, product);
   updateProduct = (id, updates) =>
     updateDoc(doc(this.db, "products", id), updates);
+  updateOrder = (id, updates) => updateDoc(doc(this.db, "order", id), updates);
   removeProduct = (id) => deleteDoc(doc(this.db, "products", id));
-  addOrder = (order) => addDoc(this.orderCollection, order);
+  addOrder = (order) => {
+    order.products.map(async (item) => {
+      item.count--;
+      await this.updateProduct(item._id, item);
+    });
+    addDoc(this.orderCollection, order);
+  };
   removeOrder = (id) => deleteDoc(doc(this.db, "order", id));
 
   // Firestore Queries
@@ -91,17 +98,7 @@ class Firebase {
   searchProducts = (searchKey) => {
     // Implement your search logic here
   };
-  generateRecaptcha = () => {
-    const recaptchaVerifier = new RecaptchaVerifier("recaptcha-container", {
-      size: "invisible", // Adjust size as needed
-      callback: () => {
-        // reCAPTCHA callback function
-      },
-    });
-
-    recaptchaVerifier.render();
-  };
-
+  getOrders = () => getDocs(this.orderQuery);
   // Storage Actions
   storeImage = async (image, setImageUrl, setLoading, setMessage) => {
     // const storage = getStorage();

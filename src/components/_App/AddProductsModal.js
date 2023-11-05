@@ -8,6 +8,7 @@ import { addProductState } from "../../utils/recoil-atoms";
 import ImageUpload from "@/utils/UploadImage";
 import firebaseInstance from "@/lib/firebase";
 import { firebaseAuthErrorToUserMessage } from "@/utils/firebaseAuthErrorToUserMessage";
+import { Button, CircularProgress } from "@mui/material";
 
 const options = [
   { key: "t-shirt", label: "T-Shirt", value: "t-shirt" },
@@ -63,7 +64,7 @@ const AddProductsModal = () => {
     // console.log(modal)
   };
 
-  const handleChanhe = (e) => {
+  const handleChange = (e) => {
     // console.log(d.value)
     const { name, value, files } = e.target;
     if (name === "media") {
@@ -131,8 +132,10 @@ const AddProductsModal = () => {
       // console.log({response})
       toggleAddProduct();
       setProduct(INITIAL_PRODUCT);
+      setLoading(false);
     } catch (error) {
       //   setError()
+      setLoading(false);
       setError(firebaseAuthErrorToUserMessage(error));
     }
   };
@@ -149,9 +152,7 @@ const AddProductsModal = () => {
         <div className="modal-body">
           <h3>Add Product</h3>
           <form onSubmit={handleSubmit}>
-            <ImageUpload setImageUrl={setImageUrl} />
-
-            <img src={mediaPreview} />
+            <ImageUpload setImageUrl={setImageUrl} imageUrl={imageUrl} />
 
             <h4 className="title">
               Add your product description and necessary information from here
@@ -164,7 +165,7 @@ const AddProductsModal = () => {
                 name="name"
                 placeholder="Name"
                 value={product.name}
-                onChange={handleChanhe}
+                onChange={handleChange}
               />
             </div>
 
@@ -176,7 +177,7 @@ const AddProductsModal = () => {
                 name="description"
                 placeholder="Description"
                 value={product.description}
-                onChange={handleChanhe}
+                onChange={handleChange}
               />
             </div>
 
@@ -188,7 +189,7 @@ const AddProductsModal = () => {
                 name="price"
                 placeholder="99.00"
                 value={product.price}
-                onChange={handleChanhe}
+                onChange={handleChange}
               />
             </div>
 
@@ -200,10 +201,10 @@ const AddProductsModal = () => {
                 name="count"
                 placeholder="Quantity"
                 value={product.count}
-                onChange={handleChanhe}
+                onChange={handleChange}
               />
             </div>
-            <div className="form-group">
+            {/* <div className="form-group">
               <label>On Sale?</label>
               <Select
                 onChange={handleOnSaleInput}
@@ -212,9 +213,9 @@ const AddProductsModal = () => {
                 instanceId="onSale"
                 inputId="onSale"
               />
-            </div>
+            </div> */}
 
-            <div className="form-group">
+            {/* <div className="form-group">
               <label>Discount In Percent (1 or 1.5 ...)</label>
               <input
                 type="text"
@@ -222,9 +223,9 @@ const AddProductsModal = () => {
                 name="onOffer"
                 placeholder="3.5"
                 value={product.onOffer}
-                onChange={handleChanhe}
+                onChange={handleChange}
               />
-            </div>
+            </div> */}
 
             <div className="form-group">
               <label>Product Type</label>
@@ -244,9 +245,21 @@ const AddProductsModal = () => {
               >
                 Cancel
               </div>
-              <button className="btn admin-btn float-right">
-                Create Product
-              </button>
+              <Button
+                type="submit"
+                size="large"
+                variant={loading ? "outlined" : "contained"}
+                color="primary"
+              >
+                Create Product{" "}
+                {loading && (
+                  <CircularProgress
+                    color="primary"
+                    size={"1.2rem"}
+                    style={{ marginLeft: "1rem" }}
+                  />
+                )}
+              </Button>
             </div>
           </form>
         </div>

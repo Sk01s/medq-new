@@ -31,7 +31,7 @@ const BannerSlider = () => {
 
                         <div className="btn-box">
                           <div className="d-flex align-items-center">
-                            <Link href="#" className="default-btn">
+                            <Link href="/shop" className="default-btn">
                               <i className="flaticon-trolley"></i> Shop Now
                             </Link>
                             <span className="price">$50.00</span>
@@ -75,7 +75,7 @@ const BannerSlider = () => {
 
                         <div className="btn-box">
                           <div className="d-flex align-items-center">
-                            <Link href="#" className="default-btn">
+                            <Link href="/shop" className="default-btn">
                               <i className="flaticon-trolley"></i> Shop Now
                             </Link>
                             <span className="price">$79.00</span>
@@ -119,7 +119,7 @@ const BannerSlider = () => {
 
                         <div className="btn-box">
                           <div className="d-flex align-items-center">
-                            <Link href="#" className="default-btn">
+                            <Link href="/shop" className="default-btn">
                               <i className="flaticon-trolley"></i> Shop Now
                             </Link>
                             <span className="price">$30.00</span>

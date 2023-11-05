@@ -11,10 +11,21 @@ import { useRouter } from "next/navigation";
 
 const ProductDetailsStyleOne = ({ product, related }) => {
   const router = useRouter();
-  const [quantity, setQuantity] = React.useState(1);
+  const [quantity, setQuantity] = React.useState(product.count <= 0 ? 0 : 1);
   const [cartProducts, setCartProducts] = useRecoilState(productsState);
 
   const addToCartWithQty = (e) => {
+    if (product.count <= 0) {
+      toast.error("out of stock", {
+        position: "bottom-left",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+      });
+      return;
+    }
     e.preventDefault();
     let getCarts = JSON.parse(localStorage.getItem("myCart"));
     let existed_item_index = -1;
@@ -86,7 +97,7 @@ const ProductDetailsStyleOne = ({ product, related }) => {
                 )}
               </div>
 
-              <div className="products-review">
+              {/* <div className="products-review">
                 <div className="rating">
                   <i className="bx bxs-star"></i>
                   <i className="bx bxs-star"></i>
@@ -97,7 +108,7 @@ const ProductDetailsStyleOne = ({ product, related }) => {
                 <Link href="#" className="rating-count">
                   3 reviews
                 </Link>
-              </div>
+              </div> */}
 
               <ul className="products-info">
                 <li>
@@ -105,7 +116,7 @@ const ProductDetailsStyleOne = ({ product, related }) => {
                 </li>
                 <li>
                   <span>Availability:</span>{" "}
-                  <Link href="#">In stock (7 items)</Link>
+                  <Link href="#">In stock ({product.count} items)</Link>
                 </li>
                 <li>
                   <span>Products Type:</span>{" "}
@@ -179,7 +190,13 @@ const ProductDetailsStyleOne = ({ product, related }) => {
                                         <i className='bx bx-minus'></i>
                                     </span> */}
                   <input
-                    onChange={(e) => setQuantity(Number(e.target.value))}
+                    onChange={(e) =>
+                      setQuantity((prev) => {
+                        if (parseInt(e.target.value) > parseInt(product.count))
+                          return prev;
+                        return Number(e.target.value);
+                      })
+                    }
                     value={quantity}
                     type="number"
                     min="1"

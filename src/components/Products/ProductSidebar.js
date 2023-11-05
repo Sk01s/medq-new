@@ -1,223 +1,230 @@
-import React from 'react';
-import Link from 'next/link';
-import Router from 'next/router'
-import { useRouter } from 'next/router'
+"use client";
+import React from "react";
+import Link from "next/link";
+// import Router from "next/router";
+// import { useRouter } from "next/navigation";
 
 const ProductSidebar = () => {
-    const router = useRouter()
-    const { term }  = router.query
+  //   const router = useRouter();
+  //   const { term } = router.query;
 
-    const typeHandler = (term) => {
-        Router.push({
-            pathname: '/products',
-            query: { term: term}
-        })
-    }
+  //   const typeHandler = (term) => {
+  //     Router.push({
+  //       pathname: "/products",
+  //       query: { term: term },
+  //     });
+  //   };
 
-    return (
-        <div className="woocommerce-widget-area">
-            <div className="woocommerce-widget color-list-widget">
-                <h3 className="woocommerce-widget-title">Color</h3>
+  return (
+    <div className="woocommerce-widget-area">
+      <div className="woocommerce-widget color-list-widget">
+        <h3 className="woocommerce-widget-title">Color</h3>
 
-                <ul className="color-list-row">
-                    <li className="active">
-                        <Link href="#">
-                            <a title="Black" className="color-black"></a>
-                        </Link>
-                    </li>
-                    <li>
-                        <Link href="#">
-                            <a title="Red" className="color-red"></a>
-                        </Link>
-                    </li>
-                    <li>
-                        <Link href="#">
-                            <a title="Yellow" className="color-yellow"></a>
-                        </Link>
-                    </li>
-                    <li>
-                        <Link href="#">
-                            <a title="White" className="color-white"></a>
-                        </Link>
-                    </li>
-                    <li>
-                        <Link href="#">
-                            <a title="Blue" className="color-blue"></a>
-                        </Link>
-                    </li>
-                    <li>
-                        <Link href="#">
-                            <a title="Green" className="color-green"></a>
-                        </Link>
-                    </li>
-                    <li>
-                        <Link href="#">
-                            <a title="Yellow Green" className="color-yellowgreen"></a>
-                        </Link>
-                    </li>
-                    <li>
-                        <Link href="#">
-                            <a title="Pink" className="color-pink"></a>
-                        </Link>
-                    </li>
-                    <li>
-                        <Link href="#">
-                            <a title="Violet" className="color-violet"></a>
-                        </Link>
-                    </li>
-                    <li>
-                        <Link href="#">
-                            <a title="Blue Violet" className="color-blueviolet"></a>
-                        </Link>
-                    </li>
-                    <li>
-                        <Link href="#">
-                            <a title="Lime" className="color-lime"></a>
-                        </Link>
-                    </li>
-                    <li>
-                        <Link href="#">
-                            <a title="Plum" className="color-plum"></a>
-                        </Link>
-                    </li>
-                    <li>
-                        <Link href="#">
-                            <a title="Teal" className="color-teal"></a>
-                        </Link>
-                    </li>
-                </ul>
+        <ul className="color-list-row">
+          <li className="active">
+            <Link href="#" title="Black" className="color-black"></Link>
+          </li>
+          <li>
+            <Link href="#" title="Red" className="color-red"></Link>
+          </li>
+          <li>
+            <Link href="#" title="Yellow" className="color-yellow"></Link>
+          </li>
+          <li>
+            <Link href="#" title="White" className="color-white"></Link>
+          </li>
+          <li>
+            <Link href="#" title="Blue" className="color-blue"></Link>
+          </li>
+          <li>
+            <Link href="#" title="Green" className="color-green"></Link>
+          </li>
+          <li>
+            <Link
+              href="#"
+              title="Yellow Green"
+              className="color-yellowgreen"
+            ></Link>
+          </li>
+          <li>
+            <Link href="#" title="Pink" className="color-pink"></Link>
+          </li>
+          <li>
+            <Link href="#" title="Violet" className="color-violet"></Link>
+          </li>
+          <li>
+            <Link
+              href="#"
+              title="Blue Violet"
+              className="color-blueviolet"
+            ></Link>
+          </li>
+          <li>
+            <Link href="#" title="Lime" className="color-lime"></Link>
+          </li>
+          <li>
+            <Link href="#" title="Plum" className="color-plum"></Link>
+          </li>
+          <li>
+            <Link href="#" title="Teal" className="color-teal"></Link>
+          </li>
+        </ul>
+      </div>
+
+      <div className="woocommerce-widget brands-list-widget">
+        <h3 className="woocommerce-widget-title">Category</h3>
+
+        <ul className="brands-list-row">
+          <li className={`active`}>
+            <Link
+              href="#"
+              onClick={(e) => {
+                e.preventDefault();
+                typeHandler("medical");
+              }}
+            >
+              Medical Equipment
+            </Link>
+          </li>
+          <li className={`active `}>
+            <Link
+              href="#"
+              onClick={(e) => {
+                e.preventDefault();
+                typeHandler("jewelry");
+              }}
+            >
+              Jewelry
+            </Link>
+          </li>
+          <li className={`active`}>
+            <Link
+              href="#"
+              onClick={(e) => {
+                e.preventDefault();
+                typeHandler("electronics");
+              }}
+            >
+              Electronics
+            </Link>
+          </li>
+          <li className={`active`}>
+            <Link
+              href="#"
+              onClick={(e) => {
+                e.preventDefault();
+                typeHandler("furniture");
+              }}
+            >
+              Furniture
+            </Link>
+          </li>
+          <li className={`active`}>
+            <Link
+              href="#"
+              onClick={(e) => {
+                e.preventDefault();
+                typeHandler("fashion");
+              }}
+            >
+              Fashion
+            </Link>
+          </li>
+          <li className={`active`}>
+            <Link
+              href="#"
+              onClick={(e) => {
+                e.preventDefault();
+                typeHandler("grocery");
+              }}
+            >
+              Grocery
+            </Link>
+          </li>
+        </ul>
+      </div>
+
+      <div className="woocommerce-widget woocommerce-ads-widget">
+        <img src="/img/ads.jpg" alt="image" />
+
+        <div className="content">
+          <span>New Arrivals</span>
+          <h3>Modern Electronic Thermometer</h3>
+
+          <Link href="#" className="default-btn">
+            <i className="flaticon-trolley"></i> Shop Now
+          </Link>
+        </div>
+
+        <Link href="#" className="link-btn"></Link>
+      </div>
+
+      <div className="woocommerce-widget best-seller-widget">
+        <h3 className="woocommerce-widget-title">Best Seller</h3>
+
+        <article className="item">
+          <Link href="#" className="thumb">
+            <span className="fullimage cover bg1" role="img"></span>
+          </Link>
+          <div className="info">
+            <h4 className="title usmall">
+              <Link href="#">Thermometer Gun</Link>
+            </h4>
+            <span>$99.00</span>
+            <div className="rating">
+              <i className="bx bxs-star"></i>
+              <i className="bx bxs-star"></i>
+              <i className="bx bxs-star"></i>
+              <i className="bx bxs-star"></i>
+              <i className="bx bxs-star"></i>
             </div>
+          </div>
+          <div className="clear"></div>
+        </article>
 
-            <div className="woocommerce-widget brands-list-widget">
-                <h3 className="woocommerce-widget-title">Category</h3>
-
-                <ul className="brands-list-row">
-                    <li className={`${(term === 'medical') ? 'active' : null }`}>
-                        <Link href="#">
-                            <a onClick={e => {e.preventDefault(); typeHandler('medical')}}>Medical Equipment</a>
-                        </Link>
-                    </li>
-                    <li className={`${(term === 'jewelry') ? 'active' : null }`}>
-                        <Link href="#">
-                            <a onClick={e => {e.preventDefault(); typeHandler('jewelry')}}>Jewelry</a>
-                        </Link>
-                    </li>
-                    <li className={`${(term === 'electronics') ? 'active' : null }`}>
-                        <Link href="#">
-                            <a onClick={e => {e.preventDefault(); typeHandler('electronics')}}>Electronics</a>
-                        </Link>
-                    </li>
-                    <li className={`${(term === 'furniture') ? 'active' : null }`}>
-                        <Link href="#">
-                            <a onClick={e => {e.preventDefault(); typeHandler('furniture')}}>Furniture</a>
-                        </Link>
-                    </li>
-                    <li className={`${(term === 'fashion') ? 'active' : null }`}>
-                        <Link href="#">
-                            <a onClick={e => {e.preventDefault(); typeHandler('fashion')}}>Fashion</a>
-                        </Link>
-                    </li>
-                    <li className={`${(term === 'grocery') ? 'active' : null }`}>
-                        <Link href="#">
-                            <a onClick={e => {e.preventDefault(); typeHandler('grocery')}}>Grocery</a>
-                        </Link>
-                    </li>
-                </ul>
+        <article className="item">
+          <Link href="#" className="thumb">
+            <span className="fullimage cover bg2" role="img"></span>
+          </Link>
+          <div className="info">
+            <h4 className="title usmall">
+              <Link href="#">Protective Gloves</Link>
+            </h4>
+            <span>$65.00</span>
+            <div className="rating">
+              <i className="bx bxs-star"></i>
+              <i className="bx bxs-star"></i>
+              <i className="bx bxs-star"></i>
+              <i className="bx bxs-star"></i>
+              <i className="bx bxs-star-half"></i>
             </div>
+          </div>
+          <div className="clear"></div>
+        </article>
 
-            <div className="woocommerce-widget woocommerce-ads-widget">
-                <img src="/img/ads.jpg" alt="image" />
+        <article className="item">
+          <Link href="#" className="thumb">
+            <span className="fullimage cover bg3" role="img"></span>
+          </Link>
+          <div className="info">
+            <h4 className="title usmall">
+              <Link href="#">Cosmetic Container</Link>
+            </h4>
 
-                <div className="content">
-                    <span>New Arrivals</span>
-                    <h3>Modern Electronic Thermometer</h3>
-
-                    <Link href="#">
-                        <a className="default-btn"><i className="flaticon-trolley"></i> Shop Now</a>
-                    </Link>
-                </div>
-
-                <Link href="#">
-                    <a className="link-btn"></a>
-                </Link>
+            <span>$139.00</span>
+            <div className="rating">
+              <i className="bx bxs-star"></i>
+              <i className="bx bxs-star"></i>
+              <i className="bx bxs-star"></i>
+              <i className="bx bxs-star"></i>
+              <i className="bx bx-star"></i>
             </div>
-
-            <div className="woocommerce-widget best-seller-widget">
-                <h3 className="woocommerce-widget-title">Best Seller</h3>
-
-                <article className="item">
-                    <Link href="#">
-                        <a className="thumb">
-                            <span className="fullimage cover bg1" role="img"></span>
-                        </a>
-                    </Link>
-                    <div className="info">
-                        <h4 className="title usmall">
-                            <Link href="#">
-                                <a>Thermometer Gun</a>
-                            </Link>
-                        </h4>
-                        <span>$99.00</span>
-                        <div className="rating">
-                            <i className='bx bxs-star'></i>
-                            <i className='bx bxs-star'></i>
-                            <i className='bx bxs-star'></i>
-                            <i className='bx bxs-star'></i>
-                            <i className='bx bxs-star'></i>
-                        </div>
-                    </div>
-                    <div className="clear"></div>
-                </article>
-
-                <article className="item">
-                    <Link href="#">
-                        <a className="thumb">
-                            <span className="fullimage cover bg2" role="img"></span>
-                        </a>
-                    </Link>
-                    <div className="info">
-                        <h4 className="title usmall">
-                            <Link href="#">
-                                <a>Protective Gloves</a>
-                            </Link>
-                        </h4>
-                        <span>$65.00</span>
-                        <div className="rating">
-                            <i className='bx bxs-star'></i>
-                            <i className='bx bxs-star'></i>
-                            <i className='bx bxs-star'></i>
-                            <i className='bx bxs-star'></i>
-                            <i className='bx bxs-star-half'></i>
-                        </div>
-                    </div>
-                    <div className="clear"></div>
-                </article>
-
-                <article className="item">
-                    <Link href="#">
-                        <a className="thumb">
-                            <span className="fullimage cover bg3" role="img"></span>
-                        </a>
-                    </Link>
-                    <div className="info">
-                        <h4 className="title usmall">
-                            <Link href="#"><a>Cosmetic Container</a></Link>
-                        </h4>
-                        
-                        <span>$139.00</span>
-                        <div className="rating">
-                            <i className='bx bxs-star'></i>
-                            <i className='bx bxs-star'></i>
-                            <i className='bx bxs-star'></i>
-                            <i className='bx bxs-star'></i>
-                            <i className='bx bx-star'></i>
-                        </div>
-                    </div>
-                    <div className="clear"></div>
-                </article>
-            </div>
-        </div>            
-    )
-}
+          </div>
+          <div className="clear"></div>
+        </article>
+      </div>
+    </div>
+  );
+};
 
 export default ProductSidebar;

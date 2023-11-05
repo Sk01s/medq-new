@@ -14,7 +14,7 @@ const INITIAL_USER = {
   password: "",
 };
 
-const LoginForm = () => {
+const LoginForm = ({ handleOpenModal }) => {
   const router = useRouter();
   const [user, setUser] = React.useState(INITIAL_USER);
   const [disabled, setDisabled] = React.useState(true);
@@ -103,7 +103,11 @@ const LoginForm = () => {
           </div>
 
           <div className="col-lg-6 col-md-6 col-6 lost-your-password-wrap">
-            <Link href="#" className="lost-your-password">
+            <Link
+              onClick={handleOpenModal}
+              href=""
+              className="lost-your-password"
+            >
               Lost your password?
             </Link>
           </div>

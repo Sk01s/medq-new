@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import Router, { useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useRecoilState } from "recoil";
 import { searchState } from "../../utils/recoil-atoms";
 
@@ -20,10 +20,8 @@ const SearchFormModal = () => {
   };
 
   const handleSearch = (e) => {
-    Router.push({
-      pathname: "/products",
-      query: { term: productSearch.search },
-    });
+    router.push(`/products/${productSearch.search}`);
+    toggleSearch();
   };
 
   return (

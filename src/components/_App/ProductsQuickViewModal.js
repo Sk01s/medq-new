@@ -9,12 +9,12 @@ import {
 } from "../../utils/recoil-atoms";
 import calculatePersentage from "../../utils/calculatePercentage";
 
-
 const ProductsQuickViewModal = () => {
   const [quantity, setQuantity] = React.useState(1);
   const [qModal, setQModal] = useRecoilState(qModalState);
   const [quickViewProduct] = useRecoilState(quickViewProductState);
   const [cartProducts, setCartProducts] = useRecoilState(productsState);
+  console.log(quickViewProduct.count);
 
   const toggleModal = () => {
     setQModal(!qModal);
@@ -131,7 +131,7 @@ const ProductsQuickViewModal = () => {
                   )}
                 </div>
 
-                <div className="products-review">
+                {/* <div className="products-review">
                   <div className="rating">
                     <i className="bx bxs-star"></i>
                     <i className="bx bxs-star"></i>
@@ -146,7 +146,7 @@ const ProductsQuickViewModal = () => {
                   >
                     3 reviews
                   </Link>
-                </div>
+                </div> */}
 
                 <ul className="products-info">
                   <li>

@@ -19,8 +19,6 @@ const MapProductsToItem = ({ products }) => {
   };
   return products.length ? (
     products.map((product) => {
-      console.log(product);
-
       return (
         <div className="col-lg-3 col-md-4 col-sm-6" key={product._id}>
           <div className="single-products-box" key={product._id}>
@@ -29,7 +27,11 @@ const MapProductsToItem = ({ products }) => {
                 <img src={product.mediaUrl} alt={product.name} />
               </Link>
 
-              <div className="new">New</div>
+              {product.count <= 0 ? (
+                <div className="new">Out of Stock</div>
+              ) : (
+                <div className="new">New</div>
+              )}
               {product.onSale ? <div className="sale">Sale</div> : ""}
 
               <div className="buttons-list">
@@ -37,15 +39,15 @@ const MapProductsToItem = ({ products }) => {
                   <li>
                     <AddToCart product={product} />
                   </li>
-                  <li>
+                  {/* <li>
                     <div className="wishlist-btn">
                       <Link href="#">
                         <i className="bx bx-heart"></i>
                         <span className="tooltip-label">Add to Wishlist</span>
                       </Link>
                     </div>
-                  </li>
-                  <li>
+                  </li> */}
+                  {/* <li>
                     <div className="quick-view-btn">
                       <Link
                         href="#"
@@ -58,7 +60,7 @@ const MapProductsToItem = ({ products }) => {
                         <span className="tooltip-label">Quick View</span>
                       </Link>
                     </div>
-                  </li>
+                  </li> */}
                 </ul>
               </div>
             </div>

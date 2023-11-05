@@ -50,6 +50,9 @@ function AddressForm({ products }) {
       const res = await firebaseInstance.addOrder({
         address: formData,
         products,
+        fulfillment: false,
+        date: new Date(),
+        email: firebaseInstance.auth.currentUser.email,
         userId: firebaseInstance.auth.currentUser.uid,
       });
       setFormData({
@@ -194,7 +197,6 @@ function AddressForm({ products }) {
       </RadioGroup>
       <br />
       <Button
-        id="recaptcha-container"
         size="large"
         type="button"
         onClick={handleCheckout}

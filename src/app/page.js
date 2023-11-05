@@ -17,10 +17,11 @@ import { fetchProducts } from "@/utils/recoil-atoms";
 import CategoriesStyleOne from "@/components/ProductCategories/CategoriesStyleOne";
 import Loader from "@/components/_App/Loader";
 
+export const revalidate = 3600;
 const Index = () => {
   const { contents } = useRecoilValueLoadable(fetchProducts);
   const products = contents;
-  if (products === undefined) {
+  if (products instanceof Promise) {
     // Loading state
     return <Loader />;
   }

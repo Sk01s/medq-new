@@ -99,18 +99,7 @@ const Footer = () => {
                   <li>
                     <Link href="/faq">Help & FAQs</Link>
                   </li>
-                  <li>
-                    <Link href="/profile-authentication">My Account</Link>
-                  </li>
-                  <li>
-                    <Link href="/cart">Order History</Link>
-                  </li>
-                  <li>
-                    <Link href="/cart">Wishlist</Link>
-                  </li>
-                  <li>
-                    <Link href="/contact">Newsletter</Link>
-                  </li>
+
                   <li>
                     <Link href="/purchase-guide">Purchasing Policy</Link>
                   </li>

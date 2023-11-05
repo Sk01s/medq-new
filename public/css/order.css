@@ -1,0 +1,112 @@
+.item {
+  position: relative;
+  padding: 1rem;
+  border: 1px solid transparent;
+}
+
+.item:nth-child(even) {
+  background: white;
+}
+
+.item:hover {
+  border: 1px solid #cacaca;
+  box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+}
+
+.item-products {
+  padding: 0;
+}
+.grid {
+  align-items: center;
+  position: relative;
+  /* border: 1px solid transparent; */
+}
+
+.grid-col {
+  position: relative;
+}
+
+.grid-count-4 {
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.grid-count-6 {
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: repeat(6, 1fr);
+  padding: 1rem;
+  border-radius: 2rem;
+  -webkit-border-radius: 2rem;
+  -moz-border-radius: 2rem;
+  -ms-border-radius: 2rem;
+  -o-border-radius: 2rem;
+}
+.text-overflow-ellipsis {
+  max-width: 120px;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.item-active {
+  border: 1px solid #eee;
+}
+
+.item-active:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, rgba(255, 255, 255, 0.3), white 90%);
+}
+
+.item-active .item-action-confirm,
+.item-active .item-action {
+  display: flex;
+}
+
+*:hover > .item-action {
+  display: flex;
+}
+
+.item-action {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  padding: 1rem;
+  background: white;
+  grid-column: span 2;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  display: none;
+}
+
+.item-action-confirm {
+  width: 350px;
+  height: 100%;
+  display: flex;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  z-index: 1;
+  display: none;
+}
+.item-action-confirm h5 {
+  flex-grow: 1;
+}
+
+.product-form-container {
+  margin-inline: auto;
+  padding-inline: 2rem;
+}

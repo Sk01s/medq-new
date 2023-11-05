@@ -24,7 +24,6 @@ const Product = () => {
     return <div>Error: {products.message}</div>;
   }
   const product = products.find((product) => product._id == id);
-  console.log(product);
   return (
     <>
       <PageBanner

@@ -7,6 +7,17 @@ import { productsState } from "../../utils/recoil-atoms";
 const AddToCart = ({ product }) => {
   const [cartProducts, setCartProducts] = useRecoilState(productsState);
   const handleAddToCart = (data, quantity = 1) => {
+    if (data.count <= 0 ) {
+      toast.error("out of stock", {
+        position: "bottom-left",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+      });
+      return
+    }
     let getCarts = JSON.parse(localStorage.getItem("myCart"));
     let existed_item_index = -1;
     if (getCarts || getCarts != null) {

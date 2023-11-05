@@ -2,12 +2,12 @@ import firebaseInstance from "@/lib/firebase";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { useRef, useState } from "react";
 
-function ImageUpload({ setImageUrl }) {
+function ImageUpload({ setImageUrl, imageUrl }) {
   const [message, setMessage] = useState();
   const [image, setImage] = useState(null);
   const [loading, setLoading] = useState(false);
   const imageEl = useRef();
-  const handleImageUpload = () => {
+  const handleImageUpload = (image) => {
     if (image) {
       setLoading(true);
 
@@ -16,8 +16,9 @@ function ImageUpload({ setImageUrl }) {
   };
   const handleImageChange = (e) => {
     const file = imageEl.current.files[0];
+    console.log(e.currentTarget, file);
     setImage(file);
-    handleImageUpload();
+    handleImageUpload(file);
   };
 
   return (
@@ -27,10 +28,16 @@ function ImageUpload({ setImageUrl }) {
         {loading ? (
           <div>Loading</div>
         ) : (
-          <span>
-            <i className="bx bxs-image-add"></i>
-            Click here or drop files to upload
-          </span>
+          <>
+            {imageUrl ? (
+              <img src={imageUrl} />
+            ) : (
+              <span>
+                <i className="bx bxs-image-add"></i>
+                Click here or drop files to upload
+              </span>
+            )}
+          </>
         )}
         <input
           ref={imageEl}

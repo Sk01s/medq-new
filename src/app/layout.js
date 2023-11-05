@@ -1,5 +1,4 @@
 "use client";
-import { Inter } from "next/font/google";
 import "../../public/css/bootstrap.min.css";
 import "../../public/css/animate.min.css";
 import "../../public/css/boxicons.min.css";
@@ -11,6 +10,7 @@ import "swiper/css";
 import "swiper/css/bundle";
 
 import "../../public/css/style.css";
+import "../../public/css/order.css";
 import "../../public/css/admin.css";
 import "../../public/css/responsive.css";
 import "../../public/css/loader.css";
@@ -31,7 +31,6 @@ export default function RootLayout({ children }) {
     firebaseInstance.auth.onAuthStateChanged(async (currentUser) => {
       if (!currentUser) return setUser(null);
       const res = await firebaseInstance.getUser(currentUser.uid);
-      console.log(res.data());
       setUser(res?.data());
     });
   }, []);
