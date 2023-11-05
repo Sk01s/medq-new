@@ -99,21 +99,13 @@ const Navbar = ({ user }) => {
                   {isSmall || (
                     <>
                       <li className="nav-item megamenu">
-                        <Link
-                          href="/"
-                          onClick={(e) => e.preventDefault()}
-                          className="nav-link"
-                        >
+                        <Link href="/" className="nav-link">
                           Home
                         </Link>
                       </li>
 
                       <li className="nav-item">
-                        <Link
-                          href="/shop"
-                          onClick={(e) => e.preventDefault()}
-                          className="nav-link"
-                        >
+                        <Link href="/shop" className="nav-link">
                           Shop
                         </Link>
                       </li>

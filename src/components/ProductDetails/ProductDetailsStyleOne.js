@@ -173,7 +173,7 @@ const ProductDetailsStyleOne = ({ product, related }) => {
                   </li>
                 </ul>
               </div> */}
-
+              <br />
               <div className="products-info-btn">
                 <Link href="/customer-service">
                   <i className="bx bxs-truck"></i> Shipping
@@ -213,12 +213,6 @@ const ProductDetailsStyleOne = ({ product, related }) => {
                 >
                   <i className="flaticon-trolley"></i> Add to Cart
                 </button>
-              </div>
-
-              <div className="wishlist-btn">
-                <Link href="#">
-                  <i className="bx bx-heart"></i> Add to Wishlist
-                </Link>
               </div>
 
               <div className="buy-checkbox-btn">
