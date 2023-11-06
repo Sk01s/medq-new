@@ -64,10 +64,12 @@ function AddressForm({ products }) {
         street: "",
         country: "Select a country",
       });
-      setLoading(false);
-      clearCart();
-      toast.info("Order placed successfully");
-      router.push("/");
+      setTimeout(() => {
+        setLoading(false);
+        toast.info("Order placed successfully");
+        clearCart();
+        router.push("/");
+      }, 5000);
     } catch (error) {
       setLoading(false);
       toast.error("Error happend !");
