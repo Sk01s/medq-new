@@ -140,14 +140,14 @@ const Navbar = ({ user }) => {
                       onClick={(e) => e.preventDefault()}
                       className="nav-link"
                     >
-                      Pages <i className="bx bx-chevron-down"></i>
+                      Other <i className="bx bx-chevron-down"></i>
                     </Link>
                     <ul className="dropdown-menu">
                       <li className="nav-item">
                         <div className="container">
                           <div className="row">
                             <div className="col">
-                              <h6 className="submenu-title">Pages </h6>
+                              <h6 className="submenu-title">other pages </h6>
 
                               <ul className="megamenu-submenu">
                                 {isSmall && (
