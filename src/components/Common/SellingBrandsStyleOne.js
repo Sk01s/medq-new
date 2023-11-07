@@ -12,7 +12,7 @@ const SellingBrandsStyleOne = () => {
         <div className="row align-items-center">
           <div className="col-lg-2 col-sm-4 col-md-2 col-6">
             <div className="single-brands-item">
-              <Link href="#" className="d-block">
+              <Link href="/" className="d-block">
                 <img src="/img/brands/brands-img1.png" alt="image" />
               </Link>
             </div>
@@ -20,7 +20,7 @@ const SellingBrandsStyleOne = () => {
 
           <div className="col-lg-2 col-sm-4 col-md-2 col-6">
             <div className="single-brands-item">
-              <Link href="#" className="d-block">
+              <Link href="/" className="d-block">
                 <img src="/img/brands/brands-img2.png" alt="image" />
               </Link>
             </div>
@@ -28,7 +28,7 @@ const SellingBrandsStyleOne = () => {
 
           <div className="col-lg-2 col-sm-4 col-md-2 col-6">
             <div className="single-brands-item">
-              <Link href="#" className="d-block">
+              <Link href="/" className="d-block">
                 <img src="/img/brands/brands-img3.png" alt="image" />
               </Link>
             </div>
@@ -36,7 +36,7 @@ const SellingBrandsStyleOne = () => {
 
           <div className="col-lg-2 col-sm-4 col-md-2 col-6">
             <div className="single-brands-item">
-              <Link href="#" className="d-block">
+              <Link href="/" className="d-block">
                 <img src="/img/brands/brands-img4.png" alt="image" />
               </Link>
             </div>
@@ -44,7 +44,7 @@ const SellingBrandsStyleOne = () => {
 
           <div className="col-lg-2 col-sm-4 col-md-2 col-6">
             <div className="single-brands-item">
-              <Link href="#" className="d-block">
+              <Link href="/" className="d-block">
                 <img src="/img/brands/brands-img5.png" alt="image" />
               </Link>
             </div>
@@ -52,7 +52,7 @@ const SellingBrandsStyleOne = () => {
 
           <div className="col-lg-2 col-sm-4 col-md-2 col-6">
             <div className="single-brands-item">
-              <Link href="#" className="d-block">
+              <Link href="/" className="d-block">
                 <img src="/img/brands/brands-img6.png" alt="image" />
               </Link>
             </div>

@@ -11,7 +11,7 @@ const MainBanner = () => {
                             <span className="sub-title">Premium Quality</span>
                             <h1>Surgical <span>Mask</span> With A Protective Layer</h1>
                             <p>Using a 5 layers surgical mask, we can protect ourselves from various germs. Everyone should use this 5 layers surgical mask.</p>
-                            <Link href="#">
+                            <Link href="/shop">
                                 <a className="default-btn"><i className="flaticon-trolley"></i> Shop Now</a>
                             </Link>
                         </div>

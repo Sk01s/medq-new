@@ -16,7 +16,7 @@ const ProductsPromotionStyleOne = () => {
                 <span className="discount">
                   <span>up to</span> 70% OFF
                 </span>
-                <Link href="#" className="link-btn">
+                <Link href="/shop" className="link-btn">
                   Shop Now <i className="flaticon-next"></i>
                 </Link>
               </div>
@@ -33,7 +33,7 @@ const ProductsPromotionStyleOne = () => {
                 <span className="discount">
                   <span>up to</span> $49.00
                 </span>
-                <Link href="#" className="link-btn">
+                <Link href="/shop" className="link-btn">
                   Shop Now <i className="flaticon-next"></i>
                 </Link>
               </div>
@@ -50,7 +50,7 @@ const ProductsPromotionStyleOne = () => {
                 <span className="discount">
                   <span>up to</span> 20% OFF
                 </span>
-                <Link href="#" className="link-btn">
+                <Link href="/shop" className="link-btn">
                   Shop Now <i className="flaticon-next"></i>
                 </Link>
               </div>

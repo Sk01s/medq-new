@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import Link from "next/link";
 import firebaseInstance from "@/lib/firebase";
 import { toast } from "react-toastify";
+import { Button } from "@mui/material";
 
 const OrderItem = ({ order, index }) => {
   const price = order?.products?.reduce(
@@ -48,35 +49,43 @@ const OrderItem = ({ order, index }) => {
         </div>
         <div className="grid-col">
           {order.products && (
-            <Link href={`/admin/order/${order.id}`}>View details</Link>
+            <Link href={`/admin/order/${order.id}`} className="">
+              View details
+            </Link>
           )}
         </div>
         {
           <div className="item-action">
-            <button
-              className="button button-border button-small button-danger"
+            <Button
               onClick={onDeleteProduct}
+              size="large"
               type="button"
+              variant={"contained"}
+              color="error"
             >
               Delete
-            </button>
+            </Button>
             <div className="item-action-confirm">
               <h5>Are you sure you want to delete this?</h5>
-              <button
-                className="button button-small button-border"
-                onClick={onCancelDelete}
+              <Button
+                size="large"
                 type="button"
+                variant={"outlined"}
+                color="primary"
+                onClick={onCancelDelete}
               >
                 No
-              </button>
+              </Button>
               &nbsp;
-              <button
-                className="button button-small button-danger"
-                onClick={onConfirmDelete}
+              <Button
+                size="large"
                 type="button"
+                variant={"contained"}
+                color="error"
+                onClick={onConfirmDelete}
               >
                 Yes
-              </button>
+              </Button>
             </div>
           </div>
         }

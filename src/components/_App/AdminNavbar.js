@@ -78,7 +78,7 @@ const AdminNavbar = () => {
                       Dashboard
                     </Link>
                   </li>
-                  <li className="nav-item">
+                  {/* <li className="nav-item">
                     <Link
                       href="/admin"
                       onClick={() => setCollapsed(true)}
@@ -95,7 +95,7 @@ const AdminNavbar = () => {
                     >
                       Orders
                     </Link>
-                  </li>
+                  </li> */}
                 </ul>
 
                 <div className="others-option d-flex align-items-center">
@@ -115,7 +115,7 @@ const AdminNavbar = () => {
                   <div className="option-item">
                     <div className="profile">
                       <Link href="#" className="nav-link">
-                        <img src="/img/profile.jpg" alt="Image" />
+                        {/* <img src="/img/profile.jpg" alt="Image" /> */}
                       </Link>
 
                       <ul className="dropdown-menu">

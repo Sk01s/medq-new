@@ -27,7 +27,7 @@ const BannerSlider = () => {
                                             <h1>Explore Something New! 20% OFF Covid19</h1>
                                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                                             
-                                            <Link href="#">
+                                            <Link href="/shop">
                                                 <a className="default-btn"><i className="flaticon-trolley"></i> Shop Now</a>
                                             </Link>
                                         </div>
@@ -51,7 +51,7 @@ const BannerSlider = () => {
                                             <h1>Digital Blood Pressure Monitor! 25+ Brand</h1>
                                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                                             
-                                            <Link href="#">
+                                            <Link href="/shop">
                                                 <a className="default-btn"><i className="flaticon-trolley"></i> Shop Now</a>
                                             </Link>
                                         </div>

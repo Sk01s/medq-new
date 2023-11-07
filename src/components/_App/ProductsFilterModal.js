@@ -137,7 +137,7 @@ const ProductsFilterModal = () => {
                 <div className="content">
                   <span>New Arrivals</span>
                   <h3>Modern Electronic Thermometer</h3>
-                  <Link href="#" className="default-btn">
+                  <Link href="/shop" className="default-btn">
                     <i className="flaticon-trolley"></i> Shop Now
                   </Link>
                 </div>

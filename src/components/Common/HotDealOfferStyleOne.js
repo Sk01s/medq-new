@@ -82,7 +82,7 @@ const HotDealOfferStyleOne = () => {
                 </div>
               </div>
 
-              <Link href="#" className="default-btn">
+              <Link href="/shop" className="default-btn">
                 <i className="flaticon-trolley"></i> Shop Now
               </Link>
               <div className="back-text">2020</div>

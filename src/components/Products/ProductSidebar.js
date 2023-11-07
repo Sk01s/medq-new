@@ -151,12 +151,10 @@ const ProductSidebar = () => {
           <span>New Arrivals</span>
           <h3>Modern Electronic Thermometer</h3>
 
-          <Link href="#" className="default-btn">
+          <Link href="/shop" className="default-btn">
             <i className="flaticon-trolley"></i> Shop Now
           </Link>
         </div>
-
-        <Link href="#" className="link-btn"></Link>
       </div>
 
       <div className="woocommerce-widget best-seller-widget">

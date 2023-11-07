@@ -64,13 +64,6 @@ const Index = () => {
               </div>
             </div> */}
 
-            <div className="col-lg-4 col-md-6">
-              <div className="admin-card">
-                <i className="bx bx-list-check"></i>
-                <h3>24</h3>
-                <p>All Orders</p>
-              </div>
-            </div>
             <BestSellingProductsStyleOne products={products} admin />
           </div>
           <div>
