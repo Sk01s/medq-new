@@ -67,10 +67,10 @@ const Index = () => {
             <BestSellingProductsStyleOne products={products} admin />
           </div>
           <div>
+            <div className="section-title">
+              <h2>Orders</h2>
+            </div>
             <div className="grid grid-product grid-count-6">
-              {/* <div className="grid-col">
-                <h5>Payment</h5>
-              </div> */}
               <div className="grid-col">
                 <h5>Price</h5>
               </div>

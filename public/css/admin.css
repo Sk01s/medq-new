@@ -934,10 +934,9 @@
   position: relative;
 }
 
-.admin-main-nav .navbar .others-option .profile img {
-  width: 40px;
-  height: 40px;
+.admin-main-nav .navbar .others-option .profile svg {
   border-radius: 50%;
+  border: solid 1px #eee;
 }
 
 .admin-main-nav .navbar .others-option .profile:hover .dropdown-menu {

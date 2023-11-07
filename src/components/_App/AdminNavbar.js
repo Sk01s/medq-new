@@ -115,7 +115,23 @@ const AdminNavbar = () => {
                   <div className="option-item">
                     <div className="profile">
                       <Link href="#" className="nav-link">
-                        <img src="/img/profile.jpg" alt="Image" />
+                        <svg
+                          aria-hidden="true"
+                          fill="none"
+                          focusable="false"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          width="24"
+                          class="css-amu4db"
+                          id="cds-react-aria-5"
+                        >
+                          <path
+                            fill-rule="evenodd"
+                            clip-rule="evenodd"
+                            d="M12.034 2.5a4.467 4.467 0 10.002 8.934 4.467 4.467 0 00-.002-8.934zM6.568 6.966a5.467 5.467 0 1110.934.002 5.467 5.467 0 01-10.934-.002zM15.868 13.348a.5.5 0 01.386-.048c4.093 1.17 6.246 4.961 6.246 8.7h-1c0-3.323-1.87-6.593-5.324-7.68a8.845 8.845 0 01-4.162 1.057h-.004a8.93 8.93 0 01-4.185-1.056C4.39 15.408 2.5 18.679 2.5 22h-1c0-3.74 2.178-7.53 6.245-8.7a.5.5 0 01.386.047 7.916 7.916 0 003.881 1.03 7.834 7.834 0 003.856-1.03z"
+                            fill="currentColor"
+                          ></path>
+                        </svg>
                       </Link>
 
                       <ul className="dropdown-menu">
