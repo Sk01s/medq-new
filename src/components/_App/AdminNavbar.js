@@ -115,7 +115,7 @@ const AdminNavbar = () => {
                   <div className="option-item">
                     <div className="profile">
                       <Link href="#" className="nav-link">
-                        {/* <img src="/img/profile.jpg" alt="Image" /> */}
+                        <img src="/img/profile.jpg" alt="Image" />
                       </Link>
 
                       <ul className="dropdown-menu">

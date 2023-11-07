@@ -122,7 +122,7 @@ const OrderView = () => {
                     <div>
                       <p>Name : {item?.name}</p>
                       <p>Description : {item?.description}</p>
-                      <p>Quantity : {item.count}</p>
+                      <p>Quantity : {item.quantity}</p>
                     </div>
                   </li>
                 ))}
