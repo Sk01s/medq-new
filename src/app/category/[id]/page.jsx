@@ -1,4 +1,3 @@
-// pages/search.js
 "use client";
 import AllProducts from "@/components/Products/AllProducts";
 import Loader from "@/components/_App/Loader";
@@ -6,27 +5,12 @@ import { fetchProducts } from "@/utils/recoil-atoms";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useRecoilValueLoadable } from "recoil";
-function isCompatible(obj, searchString) {
-  console.log(!obj || !obj.name || !obj);
-  // if (
-  //   !obj ||
-  //   !obj.name ||
-  //   !obj.description ||
-  //   typeof obj.name !== "string" ||
-  //   typeof obj.description !== "string"
-  // ) {
-  //   return false;
-  // }
-  // Convert both name and description to lowercase for a case-insensitive search
-  const nameLower = obj.name.toLowerCase();
-  const descriptionLower = obj.description.toLowerCase();
-  const searchStringLower = searchString.toLowerCase();
-
-  // Check if the searchString exists in either name or description
-  return (
-    nameLower.includes(searchStringLower) ||
-    descriptionLower.includes(searchStringLower)
-  );
+function isContained(product, subcategory) {
+  // Check if the category exists in product
+  if (product.subcategory === subcategory) return true;
+  else {
+    return false;
+  }
 }
 
 // Example usage:
@@ -36,12 +20,11 @@ export default function Search() {
   const { contents } = useRecoilValueLoadable(fetchProducts);
   const products = contents;
   const [filterdProducts, setFilterdProducts] = useState(
-    products?.filter?.((product) => isCompatible(product, id))
+    products?.filter?.((product) => isContained(product, id))
   );
-  console.log(products);
   useEffect(() => {
     setFilterdProducts(
-      products?.filter?.((product) => isCompatible(product, id))
+      products?.filter?.((product) => isContained(product, id))
     );
   }, [products]);
   if (products instanceof Promise) {
@@ -58,8 +41,13 @@ export default function Search() {
       <div className="container-fluid">
         <div className="row">
           <div className="col-lg-12 col-md-12"></div>
-          <h1>Search Results</h1>
-          <p>You searched for: {id}</p>
+          <h1>
+            {id?.split("-").map((name) => {
+              return (
+                <span style={{ textTransform: "capitalize" }}>{name} </span>
+              );
+            })}
+          </h1>
           {/* Add your search results here */}
           <AllProducts products={filterdProducts || []} />
         </div>

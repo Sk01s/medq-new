@@ -1,7 +1,6 @@
 import React from "react";
 import Link from "next/link";
 import { handleLogout } from "../../utils/auth";
-import firebaseInstance from "@/lib/firebase";
 
 const TopHeader = ({ user }) => {
   return (
@@ -12,11 +11,17 @@ const TopHeader = ({ user }) => {
             <ul className="top-header-contact-info">
               <li>
                 <i className="bx bx-phone-call"></i>
-                <a href="tel:+1234567898">(+123) 456-7898</a>
+                <a
+                  href="tel:+1234567898"
+                  style={{ textDecoration: "underline" }}
+                >
+                  (+123) 456-7898
+                </a>
               </li>
               <li>
-                <i className="bx bx-map"></i>
-                <span>6890 Blvd, The Bronx, NY 1058, USA</span>
+                <Link style={{ textDecoration: "underline" }} href={"/contact"}>
+                  Contact
+                </Link>
               </li>
             </ul>
           </div>

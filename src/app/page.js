@@ -33,23 +33,25 @@ const Index = () => {
   return (
     <>
       <BannerSlider />
-      <div className="pt-70 pb-40">
+      {/* <div className="pt-70 pb-40">
         <CategoriesStyleOne />
+      </div> */}
+      <div className="pt-70 ">
+        <BestSellingProductsStyleOne products={products} />
       </div>
+      {/* <div className="pt-70  pb-40">
+        <ProductsPromotionStyleOne />
+      </div> */}
       <div className="pb-40">
         <CategoriesStyleTwo />
       </div>
-      <BestSellingProductsStyleOne products={products} />
-      <div className="pb-40">
-        <ProductsPromotionStyleOne />
-      </div>
       <NewArrivals products={products} />
-      <HotDealOfferStyleOne />
+      {/* <HotDealOfferStyleOne /> */}
       <div className="pt-70 pb-40">
         <SellingBrandsStyleOne />
       </div>
       {/* <BlogPostStyleOne /> */}
-      <FacilityStyleOne />
+      {/* <FacilityStyleOne /> */}
     </>
   );
 };

@@ -11,7 +11,7 @@ import { useRouter } from "next/navigation";
 
 const ProductDetailsStyleOne = ({ product, related }) => {
   const router = useRouter();
-  const [quantity, setQuantity] = React.useState(product.count <= 0 ? 0 : 1);
+  const [quantity, setQuantity] = React.useState(product?.count <= 0 ? 0 : 1);
   const [cartProducts, setCartProducts] = useRecoilState(productsState);
 
   const addToCartWithQty = (e) => {

@@ -12,6 +12,7 @@ import Link from "next/link";
 import ShoppingCartModal from "./ShoppingCartModal";
 import SearchFormModal from "./SearchFormModal";
 import { handleLogout } from "../../utils/auth";
+import { subcategoryOptions } from "@/utils/constant";
 
 const Navbar = ({ user }) => {
   const [collapsed, setCollapsed] = useRecoilState(collapsedState);
@@ -97,256 +98,142 @@ const Navbar = ({ user }) => {
               <div className={classOne} id="navbarSupportedContent">
                 <ul className="navbar-nav">
                   {isSmall || (
-                    <>
-                      <li className="nav-item megamenu">
-                        <Link href="/" className="nav-link">
-                          Home
-                        </Link>
-                      </li>
-
-                      <li className="nav-item">
-                        <Link href="/shop" className="nav-link">
-                          Shop
-                        </Link>
-                      </li>
-                    </>
+                    <li className="nav-item megamenu">
+                      <Link href="/" className="nav-link">
+                        Home
+                      </Link>
+                    </li>
                   )}
-                  {/* <li className="nav-item">
-                    {isSmall || (
-                      <Link
-                        href="/"
-                        onClick={() => setCollapsed(true)}
-                        className="nav-link"
-                      >
-                        Home <i className="bx bx-chevron-down"></i>
-                      </Link>
-                    )}
-                  </li> */}
-                  {/* <li className="nav-item">
-                    {isSmall || (
-                      <Link
-                        href="/shop"
-                        onClick={(e) => e.preventDefault()}
-                        className="nav-link"
-                      >
-                        Shop <i className="bx bx-chevron-down"></i>
-                      </Link>
-                    )}
-                  </li> */}
-
                   <li className="nav-item megamenu">
                     <Link
                       href="#"
                       onClick={(e) => e.preventDefault()}
                       className="nav-link"
                     >
-                      Other <i className="bx bx-chevron-down"></i>
+                      {isSmall || (
+                        <>
+                          Categories <i className="bx bx-chevron-down"></i>
+                        </>
+                      )}
                     </Link>
                     <ul className="dropdown-menu">
+                      {isSmall && (
+                        <div className="container">
+                          <div className="row">
+                            <div className="col">
+                              <Link
+                                href={"/"}
+                                className="submenu-title"
+                                style={{
+                                  display: "block",
+                                  width: "100%",
+                                  marginBottom: "1rem",
+                                }}
+                              >
+                                Home
+                              </Link>
+
+                              <Link
+                                href="/shop"
+                                onClick={() => setCollapsed(true)}
+                                className="submenu-title"
+                                style={{
+                                  display: "block",
+                                  width: "100%",
+                                  marginTop: "0rem",
+                                  marginBottom: "1rem",
+                                }}
+                              >
+                                Shop
+                              </Link>
+                              <Link
+                                href="/auth"
+                                onClick={() => setCollapsed(true)}
+                                className="submenu-title"
+                                style={{
+                                  display: "block",
+                                  width: "100%",
+                                  marginTop: "0rem",
+                                  marginBottom: "1rem",
+                                }}
+                              >
+                                Log In
+                              </Link>
+                            </div>
+                          </div>
+                        </div>
+                      )}
                       <li className="nav-item">
                         <div className="container">
                           <div className="row">
                             <div className="col">
-                              <h6 className="submenu-title">Pages </h6>
+                              <h6 className="submenu-title">Categories </h6>
 
                               <ul className="megamenu-submenu">
-                                {isSmall && (
-                                  <li className="nav-item">
-                                    <Link
-                                      href="/"
-                                      onClick={() => setCollapsed(true)}
-                                      className="nav-link"
+                                {isSmall ? (
+                                  subcategoryOptions.map((subcategory) => (
+                                    <li
+                                      className="nav-item"
+                                      key={subcategory.value}
                                     >
-                                      Home
-                                    </Link>
-                                  </li>
-                                )}
-                                {isSmall && (
-                                  <li className="nav-item">
-                                    <Link
-                                      href="/shop"
-                                      onClick={() => setCollapsed(true)}
-                                      className="nav-link"
-                                    >
-                                      Shop
-                                    </Link>
-                                  </li>
-                                )}
-                                <li className="nav-item">
-                                  <Link
-                                    href="/about"
-                                    onClick={() => setCollapsed(true)}
-                                    className="nav-link"
-                                  >
-                                    About Us
-                                  </Link>
-                                </li>
-
-                                {user ? (
-                                  <li className="nav-item">
-                                    <Link
-                                      href="/auth"
-                                      onClick={(e) => {
-                                        e.preventDefault();
-                                        handleLogout();
-                                      }}
-                                      className="nav-link"
-                                    >
-                                      Logout
-                                    </Link>
-                                  </li>
+                                      <Link
+                                        href={
+                                          "/subcategory/" + subcategory.value
+                                        }
+                                        onClick={() => setCollapsed(true)}
+                                        className="nav-link"
+                                      >
+                                        {subcategory.label}
+                                      </Link>
+                                    </li>
+                                  ))
                                 ) : (
-                                  <li className="nav-item">
-                                    <Link
-                                      href="/auth"
-                                      onClick={() => setCollapsed(true)}
-                                      className="nav-link"
-                                    >
-                                      Login
-                                    </Link>
-                                  </li>
+                                  <div className="container">
+                                    <div className="row">
+                                      {subcategoryOptions.map(
+                                        (subcategory, index) => (
+                                          <div className="col-4" key={index}>
+                                            <li className="nav-item">
+                                              <Link
+                                                href={
+                                                  "/subcategory/" +
+                                                  subcategory.value
+                                                }
+                                                onClick={() =>
+                                                  setCollapsed(true)
+                                                }
+                                                className="nav-link"
+                                              >
+                                                {subcategory.label}
+                                              </Link>
+                                            </li>
+                                          </div>
+                                        )
+                                      )}
+                                    </div>
+                                  </div>
                                 )}
-
-                                <li className="nav-item">
-                                  <Link
-                                    href="/faq"
-                                    onClick={() => setCollapsed(true)}
-                                    className="nav-link"
-                                  >
-                                    FAQ's
-                                  </Link>
-                                </li>
-                                <li className="nav-item">
-                                  <Link
-                                    href="/customer-service"
-                                    onClick={() => setCollapsed(true)}
-                                    className="nav-link"
-                                  >
-                                    Customer Service
-                                  </Link>
-                                </li>
-                                <li className="nav-item">
-                                  <Link
-                                    href="/purchase-guide"
-                                    onClick={() => setCollapsed(true)}
-                                    className="nav-link"
-                                  >
-                                    Purchase Guide
-                                  </Link>
-                                </li>
-
-                                <li className="nav-item">
-                                  <Link
-                                    href="/privacy-policy"
-                                    onClick={() => setCollapsed(true)}
-                                    className="nav-link"
-                                  >
-                                    Privacy Policy
-                                  </Link>
-                                </li>
-
-                                <li className="nav-item">
-                                  <Link
-                                    href="/terms-of-service"
-                                    onClick={() => setCollapsed(true)}
-                                    className="nav-link"
-                                  >
-                                    Terms of Service
-                                  </Link>
-                                </li>
-
-                                {/* <li className="nav-item">
-                                    <Link
-                                      href="/track-order"
-                                      onClick={() => setCollapsed(true)}
-                                      className="nav-link"
-                                    >
-                                      Tracking Order
-                                    </Link>
-                                  </li> */}
                               </ul>
                             </div>
-
-                            {/* <div className="col">
-                                <h6 className="submenu-title">Shop Styles</h6>
-
-                                <ul className="megamenu-submenu">
-                                  <li className="nav-item">
-                                    <Link
-                                      href="/products-left-sidebar"
-                                      onClick={() => setCollapsed(true)}
-                                      className="nav-link"
-                                    >
-                                      Left Sidebar
-                                    </Link>
-                                  </li>
-
-                                  <li className="nav-item">
-                                    <Link
-                                      href="/products-left-sidebar-with-categories"
-                                      onClick={() => setCollapsed(true)}
-                                      className="nav-link"
-                                    >
-                                      Left Sidebar With Categories
-                                    </Link>
-                                  </li>
-
-                                  <li className="nav-item">
-                                    <Link
-                                      href="/products-right-sidebar"
-                                      onClick={() => setCollapsed(true)}
-                                      className="nav-link"
-                                    >
-                                      Right Sidebar
-                                    </Link>
-                                  </li>
-
-                                  <li className="nav-item">
-                                    <Link
-                                      href="/products-right-sidebar-with-categories"
-                                      onClick={() => setCollapsed(true)}
-                                      className="nav-link"
-                                    >
-                                      Right Sidebar With Categories
-                                    </Link>
-                                  </li>
-
-                                  <li className="nav-item">
-                                    <Link
-                                      href="/products-without-sidebar"
-                                      onClick={() => setCollapsed(true)}
-                                      className="nav-link"
-                                    >
-                                      Without Sidebar
-                                    </Link>
-                                  </li>
-
-                                  <li className="nav-item">
-                                    <Link
-                                      href="/products-left-sidebar-fullwidth"
-                                      onClick={() => setCollapsed(true)}
-                                      className="nav-link"
-                                    >
-                                      With Left Sidebar
-                                    </Link>
-                                  </li>
-
-                                  <li className="nav-item">
-                                    <Link
-                                      href="/products-right-sidebar-fullwidth"
-                                      onClick={() => setCollapsed(true)}
-                                      className="nav-link"
-                                    >
-                                      With Right Sidebar
-                                    </Link>
-                                  </li>
-                                </ul>
-                              </div> */}
                           </div>
                         </div>
                       </li>
                     </ul>
                   </li>
+                  {isSmall || (
+                    <>
+                      <li className="nav-item">
+                        <Link href="/shop" className="nav-link">
+                          Shop
+                        </Link>
+                      </li>
+                      <li className="nav-item">
+                        <Link href="/auth" className="nav-link">
+                          Sign In
+                        </Link>
+                      </li>
+                    </>
+                  )}
                 </ul>
               </div>
 

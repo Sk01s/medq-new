@@ -9,23 +9,7 @@ import ImageUpload from "@/utils/UploadImage";
 import firebaseInstance from "@/lib/firebase";
 import { firebaseAuthErrorToUserMessage } from "@/utils/firebaseAuthErrorToUserMessage";
 import { Button, CircularProgress } from "@mui/material";
-
-const options = [
-  { key: "t-shirt", label: "T-Shirt", value: "t-shirt" },
-  { key: "fashion", label: "Fashion", value: "fashion" },
-  { key: "furniture", label: "Furniture", value: "furniture" },
-  { key: "jewelry", label: "Jewelry", value: "jewelry" },
-  {
-    key: "book-magazine",
-    label: "Book and Magazine",
-    value: "book-magazine",
-  },
-  { key: "electronics", label: "Electronics", value: "electronics" },
-  { key: "medical", label: "Medical", value: "medical" },
-  { key: "home-decor", label: "Home Decor", value: "home-decor" },
-  { key: "grocery", label: "Grocery", value: "grocery" },
-  { key: "other", label: "Other", value: "other" },
-];
+import { categoryOptions, subcategoryOptions } from "@/utils/constant";
 
 const saleOptions = [
   { label: "Yes", value: true },
@@ -76,8 +60,12 @@ const AddProductsModal = () => {
     // console.log(product);
   };
 
-  const handleSelectInput = (e) => {
-    setProduct((prevState) => ({ ...prevState, productType: e.value }));
+  const handleSelectInputCategory = (e) => {
+    setProduct((prevState) => ({ ...prevState, category: e.value }));
+    // console.log(product)
+  };
+  const handleSelectInputSubcategory = (e) => {
+    setProduct((prevState) => ({ ...prevState, subcategory: e.value }));
     // console.log(product)
   };
 
@@ -110,14 +98,23 @@ const AddProductsModal = () => {
       //   const url = `${baseUrl}/api/products/create`;
       const id = firebaseInstance.generateKey();
       console.log(id);
-      const { name, price, description, productType, onSale, onOffer, count } =
-        product;
+      const {
+        name,
+        price,
+        description,
+        category,
+        subcategory,
+        onSale,
+        onOffer,
+        count,
+      } = product;
       const payload = {
         count,
         name,
         price,
         description,
-        productType,
+        category,
+        subcategory,
         mediaUrl,
         onSale,
         onOffer,
@@ -180,7 +177,26 @@ const AddProductsModal = () => {
                 onChange={handleChange}
               />
             </div>
-
+            <div className="form-group">
+              <label>Categroy</label>
+              <Select
+                onChange={handleSelectInputCategory}
+                options={categoryOptions}
+                id="category"
+                instanceId="category"
+                inputId="category"
+              />
+            </div>
+            <div className="form-group">
+              <label>Subcategory</label>
+              <Select
+                onChange={handleSelectInputSubcategory}
+                options={subcategoryOptions}
+                id="subcategory"
+                instanceId="subcategory"
+                inputId="subcategory"
+              />
+            </div>
             <div className="form-group">
               <label>Price</label>
               <input
@@ -208,7 +224,7 @@ const AddProductsModal = () => {
               <label>On Sale?</label>
               <Select
                 onChange={handleOnSaleInput}
-                options={saleOptions}
+                categoryOptions={saleOptions}
                 id="onSale"
                 instanceId="onSale"
                 inputId="onSale"
@@ -226,17 +242,6 @@ const AddProductsModal = () => {
                 onChange={handleChange}
               />
             </div> */}
-
-            <div className="form-group">
-              <label>Product Type</label>
-              <Select
-                onChange={handleSelectInput}
-                options={options}
-                id="productType"
-                instanceId="productType"
-                inputId="productType"
-              />
-            </div>
 
             <div className="modal-btn">
               <div

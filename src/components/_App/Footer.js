@@ -91,7 +91,7 @@ const Footer = () => {
               </div>
             </div>
 
-            <div className="col-lg-3 col-sm-6 col-md-6">
+            {/* <div className="col-lg-3 col-sm-6 col-md-6">
               <div className="single-footer-widget">
                 <h3>Customer Care</h3>
 
@@ -105,7 +105,7 @@ const Footer = () => {
                   </li>
                 </ul>
               </div>
-            </div>
+            </div> */}
 
             <div className="col-lg-3 col-sm-6 col-md-6">
               <div className="single-footer-widget">
@@ -137,10 +137,7 @@ const Footer = () => {
               <div className="col-lg-6 col-md-6">
                 <p>
                   Copyright <i className="bx bx-copyright"></i> {currentYear}{" "}
-                  MedQ. Designed By{" "}
-                  <Link href="https://envytheme.com/" target="_blank">
-                    EnvyTheme
-                  </Link>
+                  MedQ
                 </p>
               </div>
 

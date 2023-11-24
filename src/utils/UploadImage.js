@@ -43,6 +43,7 @@ function ImageUpload({ setImageUrl, imageUrl }) {
           ref={imageEl}
           type="file"
           className="form-control-file"
+          style={{ width: "100%" }}
           name="media"
           accept="image/*"
           onChange={handleImageChange}
